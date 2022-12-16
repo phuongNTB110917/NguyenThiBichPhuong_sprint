@@ -1,0 +1,70 @@
+<div>
+  <div class="row background">
+    <div class="col-sm-2 p-0" style="height:120vh;  background-color: rgba(0,0,0,0.52);">
+      <div class="list-group ng-dark">
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-film"></i> Bán vé </a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-ticket-perforated-fill"></i> Quản lí đặt vé</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-person-fill"></i> Quản lí nhân viên</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-credit-card-2-back-fill"></i> Quản lí thành viên</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-reels-fill"></i> Quản lí phim</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-calendar-week-fill"></i> Quản lí khuyến mãi</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-video-fill"></i> Quản lí phòng chiếu</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-bar-chart-line-fill"></i> Quản lí thống kê </a>
+      </div>
+    </div>
+    <div class="col-sm-10 p-4">
+      <div class="container border" style="background-color: rgba(0,0,0,0.7)">
+        <h1 class="mt-4 mb-4" style="color: red;font-weight: bold">Danh Sách Thông Tin Thành Viên</h1>
+        <hr style="color: white;  ">
+        <form class="form-inline" method="get" [formGroup]="searchForm" (ngSubmit)="getAll((page = $event))">
+          <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm tên thành viên" aria-label="Tìm kiếm"
+                 formControlName="fullname">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+        <br>
+        <!--    Phân trang-->
+        <div class="d-flex mt-4 flex-wrap">
+          <p class="text-muted"></p>
+          <nav class="ml-auto">
+            <pagination-controls class="myPagination" (pageChange)="getAll((page = $event))"
+                                 [previousLabel]="labels.previousLabel"
+                                 [nextLabel]="labels.nextLabel"></pagination-controls>
+          </nav>
+        </div>
+        <table class="table text-center table-responsive-md">
+          <thead style="color: red">
+          <tr>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Mã Thành Viên</th>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Tên Thành Viên</th>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Số CMND</th>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Email</th>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Số Điện Thoại</th>
+            <th scope="col" width=auto class="font-weight-bold" style="text-align: center">Địa Chỉ</th>
+          </tr>
+          </thead>
+          <tbody style="color: white">
+          <tr *ngFor="let item of accounts| paginate:{itemsPerPage:itemsPerPage, currentPage:page, totalItems:totalItems};">
+            <td style="text-align: center">{{item.id}}</td>
+            <td style="text-align: left">{{item.fullname}}</td>
+            <td style="text-align: center">{{item.idCard}}</td>
+            <td style="text-align: left">{{item.email}}</td>
+            <td style="text-align: center">{{item.phone}}</td>
+            <td style="text-align: left">{{item.address}}</td>
+            <td style="text-align: center">
+              <button class="btn btn-outline-warning" [routerLink]="['/account/edit',item.id]"><i class="bi bi-pencil-square"></i></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

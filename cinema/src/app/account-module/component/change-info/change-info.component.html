@@ -1,0 +1,127 @@
+<div class="row background container-fluid m-0 p-0">
+  <div class="col-2 p-0">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10">
+    <div class="border rounded mt-4 form-wrapper">
+      <h4 class="px-3 py-2 border text-color-red-primary">Thông tin tài khoản</h4>
+      <div class="p-3">
+        <form appFocusInvalidInput #focusInput="focusInvalidInput" [formGroup]="form" (ngSubmit)="update()">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="fullname-input">Họ và tên
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Họ tên" id="fullname-input" formControlName="fullname">
+              <div class="text-danger" *ngFor="let validation of validation_messages.fullname">
+                <div class="error-message"
+                     *ngIf="fullname.hasError(validation.type) && (fullname.dirty || fullname.touched)">
+                  {{validation.message}}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="date-of-birth-input">Ngày sinh
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9">
+              <input type="date" class="form-control" id="date-of-birth-input" formControlName="birthday">
+              <div class="text-danger" *ngFor="let validation of validation_messages.birthday">
+                <div class="error-message"
+                     *ngIf="birthday.hasError(validation.type) && (birthday.dirty || birthday.touched)">
+                  {{validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold">Giới tính
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9 d-flex align-items-center">
+              <input type="radio" name="gender" value="Nam" id="gender-male" formControlName="gender">
+              <label class="mb-1 mx-3" for="gender-male">Nam</label>
+              <input type="radio" name="gender" value="Nữ" id="gender-female" formControlName="gender">
+              <label class="mb-1 mx-3" for="gender-female">Nữ</label>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="email-input">Email
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9">
+              <input type="email" class="form-control" placeholder="Email" id="email-input" formControlName="email">
+              <div class="text-danger" *ngFor="let validation of validation_messages.email">
+                <div class="error-message"
+                     *ngIf="email.hasError(validation.type) && (email.dirty || email.touched)">
+                  {{validation.message}}
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="isEmailExist">
+                Email {{email.value}} đã tồn tại trong hệ thống
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="identity-card-input">CMND
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Chứng minh nhân dân"
+                     id="identity-card-input" formControlName="idCard">
+              <div class="text-danger" *ngFor="let validation of validation_messages.idCard">
+                <div class="error-message"
+                     *ngIf="idCard.hasError(validation.type) && (idCard.dirty || idCard.touched)">
+                  {{validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="phone-input">Số điện thoại
+              <span class="text-danger">(*)</span>:
+            </label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Số điện thoại"
+                     id="phone-input" formControlName="phone">
+              <div class="text-danger" *ngFor="let validation of validation_messages.phone">
+                <div class="error-message"
+                     *ngIf="phone.hasError(validation.type) && (phone.dirty || phone.touched)">
+                  {{validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold" for="address-input">Địa chỉ</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" placeholder="Địa chỉ" id="address-input" formControlName="address">
+              <div class="text-danger" *ngFor="let validation of validation_messages.address">
+                <div class="error-message"
+                     *ngIf="address.hasError(validation.type) && (address.dirty || address.touched)">
+                  {{validation.message}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9 d-flex justify-content-end">
+              <button class="btn text-white bg-color-btn mx-5" (click)="focusInput.focus()">
+                <i class="bi bi-box-arrow-in-down icon-update"></i>
+                Cập nhật
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

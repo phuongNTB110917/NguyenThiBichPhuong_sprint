@@ -1,0 +1,49 @@
+<nav id="sidebarMenu" class="d-lg-block sidebar">
+  <div class="list-group">
+    <div class="list-group-item py-2" aria-current="true">
+      <div class="text-center">
+        <img src="{{imageAccount}}"
+             class="rounded-circle avatar-image" alt="Avatar" (error)="updateUrl($event)">
+        <div class="font-weight-bold mt-2 text-white">{{fullName}}</div>
+        <div class="my-3 text-white">
+          <i class="fa-solid fa-angles-down"></i>
+          Điểm tích luỹ: {{totalPoint}}
+        </div>
+        <button class="btn mb-2 text-white bg-color-btn">
+          <i class="bi bi-box-arrow-in-left"></i>
+          Đăng xuất
+        </button>
+      </div>
+    </div>
+    <a routerLink="/account/changeInfo" class="list-group-item py-2" aria-current="true">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-person-circle"></i>
+                                <span> Thông tin tài khoản</span>
+                            </span>
+    </a>
+    <a routerLink="/account/changePassword" class="list-group-item py-2" aria-current="true">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-lock"></i>
+                                <span> Đổi mật khẩu</span>
+                            </span>
+    </a>
+    <a routerLink="/account/view-history-point" class="list-group-item py-2">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-clock-history"></i>
+                                <span> Lịch sử</span>
+                            </span>
+    </a>
+    <a routerLink="/ticket/getbookedticket" class="list-group-item py-2">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-bag-check-fill"></i>
+                                <span>Vé đã đặt</span>
+                            </span>
+    </a>
+    <a href="#" class="list-group-item py-2">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-bag-x-fill"></i>
+                                <span>Vé đã huỷ</span>
+                            </span>
+    </a>
+  </div>
+</nav>

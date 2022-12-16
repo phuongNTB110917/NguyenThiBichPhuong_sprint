@@ -1,0 +1,183 @@
+<div class="container-plus">
+  <div class="container">
+    <div class="row">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Trang chủ</li>
+        <li class="breadcrumb-item">Đặt vé</li>
+        <li class="breadcrumb-item upper-case active">
+          {{film.name}}
+        </li>
+      </ol>
+    </div>
+    <div class="row">
+      <div class="col-8 padding-right-left-15">
+        <div class="detail-feature">
+          <div class="row">
+            <div class="col-4">
+              <div class="detail-feat-img">
+                <img
+                  [src]="film.filmImgs[0].urlImg|safe: 'url'"
+                  alt=""
+                />
+                <div class="play-bt">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  ></button>
+
+                  <!-- Modal -->
+                  <div
+                    class="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">
+                            {{film.name}}
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                            (click)="closeYt()"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <iframe
+                            #player
+                            width="917"
+                            height="516"
+                            [src]="film.trailer | safe: 'resourceUrl'"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            title="DUYÊN MA || OFFICIAL TRAILER || KC 12.08.2022 TRÊN TOÀN QUỐC"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="details col-8">
+              <!--              <h2 class="detail-title vn upper-case">-->
+              <!--                Thor: Tình yêu và sấm sét-->
+              <!--              </h2>-->
+              <div class="detail-info">
+                <h2 class="detail-title upper-case">{{film.name}}</h2>
+                <div class="detail-info-row">
+                  <label>Thể loại: &nbsp;</label>
+                  <div class="detail-info-right">
+                    <a *ngFor="let categoryFilm of film.categoryFilms, index as i"
+                       href="">{{categoryFilm.category.nameCategory}}<span
+                      *ngIf="( i + 1 ) < film.categoryFilms.length">, </span></a>
+
+                  </div>
+                </div>
+                <div class="detail-info-row">
+                  <label>Đạo diễn: &nbsp;</label>
+                  <div class="detail-info-right">
+                    <a href="">{{film.director}}</a>
+                  </div>
+                </div>
+                <div class="detail-info-row">
+                  <label>Diễn viên: &nbsp;</label>
+                  <div class="detail-info-right">
+                    <a href="">{{film.actor}}</a>
+                  </div>
+                </div>
+                <div class="detail-info-row">
+                  <label>Quốc gia: &nbsp;</label>
+                  <div class="detail-info-right">
+                    <a href="">Mỹ</a>
+                  </div>
+                </div>
+                <div class="detail-info-row">
+                  <label>Nhà xuất hành: &nbsp;</label>
+                  <div class="detail-info-right">
+                    <a href="">{{film.studioName}}</a>
+                  </div>
+                </div>
+                <div class="detail-info-row">
+                  <label>Ngày khởi chiếu:&nbsp; </label>
+                  <div class="detail-info-right">
+                    <a href="">{{film.startDate|date:"dd/MM/yyyy"}}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="button-booking">
+                <a href="">Đặt vé</a>
+              </div>
+            </div>
+            <div class="detail-description">
+              <div class="content-text">
+                <h3>Nội dung phim</h3>
+                <div class="content-text-actors-info">
+                  <br/>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Placeat odio magnam veritatis excepturi similique quod
+                    quam corrupti incidunt nam, cum iste obcaecati quasi,
+                    soluta laborum architecto natus rerum quidem
+                    exercitationem esse harum? Natus repellendus, nostrum cum
+                    facilis qui laudantium quaerat esse vitae cupiditate
+                    debitis provident labore. Repudiandae autem explicabo ad
+                    sed consectetur tenetur hic vel deleniti porro nam facere
+                    ipsam quod esse provident maxime delectus amet cupiditate
+                    et animi distinctio, ipsum facilis enim quibusdam
+                    corrupti! Sunt dolore perferendis amet adipisci? Ut
+                    ducimus amet ad deleniti natus laboriosam provident ipsam,
+                    consequatur mollitia possimus dignissimos, tempore dolor
+                    recusandae aut corporis rerum cum.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 padding-right-left-15">
+        <div class="movieSidebar">
+          <h3>phim đang chiếu</h3>
+        </div>
+        <div class="movies-group">
+          <div *ngFor="let filmOther of otherFilm" class="movie-item">
+            <div class="article-movie-home">
+              <img
+                [src]="filmOther.filmImgs[1].urlImg"
+              />
+              <a href="">Mua ngay</a>
+            </div>
+            <div class="title-movie">
+              <h4 class="upper-text">{{filmOther.name}}</h4>
+              <!--              <h4 class="upper-text vn">thor: tình yêu và sấm sét</h4>-->
+            </div>
+          </div>
+          <!--          <div class="movie-item">-->
+          <!--            <div class="article-movie-home">-->
+          <!--              <img-->
+          <!--                src=""-->
+          <!--                alt=""-->
+          <!--              />-->
+          <!--            </div>-->
+          <!--            <div class="title-movie">-->
+          <!--              <h4 class="upper-text">thor: love and thunder</h4>-->
+          <!--              <h4 class="upper-text vn">thor: tình yêu và sấm sét</h4>-->
+          <!--            </div>-->
+          <!--          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

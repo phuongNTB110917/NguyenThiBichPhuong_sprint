@@ -1,0 +1,103 @@
+<div class="container-scroller">
+  <div class="background">
+    <div class="container">
+      <div class="navbar-nav navbar-nav-right ml-auto pt-4">
+        <form class="form-inline" method="post" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+          <table>
+            <tr>
+              <td>
+                <input class="form-control mr-sm-2 text-dark" type="search" placeholder="Tìm kiếm" aria-label="Tìm kiếm" formControlName="name" value='' style="opacity: 0.9" >
+              </td>
+              <td>
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" style="background: rgba(255,0,0,0.69); color: #cccccc; margin: 0"  [disabled]="searchForm.controls['name'].hasError('pattern')" [class]="searchForm.controls['name'].hasError('pattern')==true?'':'zoom'">Tìm kiếm</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div *ngIf="searchForm.controls['name'].hasError('pattern')">
+                  <p style="color: red">Không đúng định dạng</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div>
+        <a (click)="reload()" style="color: white; background: rgba(255,0,0,0.69) " class="btn btn-danger my-2 my-sm-0">Tải lại</a>
+      </div>
+      <div style="background: rgba(0,0,0,0.61)" class ="table-content navbar-nav-scroll">
+        <div class="table table" >
+          <table class="table text-center">
+            <thead style="color: red">
+            <tr>
+              <th class="font-weight-bold">#</th>
+              <th class="font-weight-bold">Mã Nhân Viên</th>
+              <th class="font-weight-bold ">Tên Nhân Viên</th>
+              <th class="font-weight-bold">Số CMND</th>
+              <th class="font-weight-bold">Email</th>
+              <th class="font-weight-bold">Số Điện Thoại</th>
+              <th class="font-weight-bold ">Địa Chỉ</th>
+              <th class="font-weight-bold">Xoá</th>
+            </tr>
+            </thead>
+            <tbody style="color: #cccccc">
+            <tr *ngIf="numEmployee==0">
+              <td colspan="8">Không có dữ liệu</td>
+            </tr>
+            <tr *ngFor="let e of employees; index as i " >
+              <th scope="row">{{(indexPagination*size)+i+1}}</th>
+              <td >{{e.id}}</td>
+              <td class="text-left">{{e.fullname}}</td>
+              <td>{{e.idCard}}</td>
+              <td class="text-left">{{e.email}}</td>
+              <td>{{e.phone}}</td>
+              <td class="text-left actor" >{{e.address}}</td>
+              <td>
+                <button type="button" class="btn btn-outline zoom" style="border: red 1px solid"data-toggle="modal" data-target="#exampleModal" (click)="findDeleteById(e.fullname,e.id)">
+                  <i class="bi bi-trash3-fill" style="color: #cccccc"></i>
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex pt-4 flex-wrap m-3">
+          <p class="text-muted">PAGE</p>
+          <nav class="ml-auto">
+            <ul class="pagination separated pagination-info">
+              <li class="page-item"><button class="page-link" (click)="previousPage()" [disabled]="indexPagination <= 0" class="{{indexPagination<=0?'':'zoom'}}" >Trang trước</button></li>
+              <li class="page-item"><span class="page-link"><span>{{indexPagination+1}}</span><span>/</span><span>{{totalPages}}</span></span></li>
+              <li class="page-item"><button class="page-link" (click)="nextPage()" [disabled]="indexPagination >= totalPages-1" class="{{indexPagination >= totalPages - 1?'':'zoom'}}" >Trang kế</button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bạn có muốn xoá <u style="color: red">{{name}}</u> không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" style="border: red 1px solid"data-toggle="modal" (click)="delete(id)" data-dismiss="modal">
+            Xoá
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

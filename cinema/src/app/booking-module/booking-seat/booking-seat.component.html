@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  <title>Đặt ghế</title>
+</head>
+
+<body>
+
+
+<div class="content">
+  <div class="container">
+    <div class="d-flex">
+      <div class="wp-context col-9 min-vh-100 padding-right-left-15 text-center">
+        <div class=" col-12 h-100 padding-10 container" style="background-color:#000; border: 1px #ef3e3a solid">
+<!--          tiêu đề-->
+          <div class="row text-white">
+            <h3 style="color: #fff; text-align: left;padding-left: 35px;" class="col-lg-4 mt-2">CHỌN GHẾ :</h3>
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4 mt-2" style="text-align: right;">
+              <button class="btn btn-danger mr-4">Đặt vé</button>
+            </div>
+          </div>
+<!--          màn hình-->
+          <div class="row">
+            <div class="screen container" style="align-items: center; width: 50%; height: auto" >Màn hình</div>
+          </div>
+<!--          ghế ngồi-->
+          <div class="row container" style="margin:50px 0px 50px 0px;">
+            <table style="align-items: center; width: 80%">
+              <tr *ngFor="let row of rows">
+                <td *ngFor="let seat of seats; let i = index">
+                  <div (click)="chooseSeat(row+''+seat)" [ngClass]="{'seat-selected' : selectedIdx == row+''+seat, 'seat-select': selectedIdx != row+''+seat}">
+                    {{row + '' + seat}}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="row">
+            <div style="width: 80%; margin: 20px auto; display: block;">
+              <span [ngClass]="{'seat-disabled': true}" style=" margin: 10px;padding: 10px;">Ghế đã đặt</span>
+              <span [ngClass]="{'seat-selected': true}" style=" margin: 10px;padding: 10px;">Ghế đang chọn</span>
+              <span [ngClass]="{'seat-select':true}" style=" margin: 10px;padding: 10px;">Ghế trống</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar col-3 min-vh-100 padding-right-left-15" style="background: #111111; border: #ef3e3a 1px solid">
+        <div class="col-12 h-100 padding-10 bg-sidebar">
+          <div class="sidebar__top padding-right-left-15">
+            <img src="/assets/tuan/images/1800wx1200h1_1656065042170.jpeg" class="col-12" alt="" />
+          </div>
+          <div class="sidebar_bottom">
+            <div class="sub-title">
+              <h2>THOR: LOVE AND THUNDER</h2>
+              <h2>Thor: Tình Yêu Và Sấm Sét</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

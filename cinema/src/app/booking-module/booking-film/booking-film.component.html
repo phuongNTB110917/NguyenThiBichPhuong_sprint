@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<!--  <link rel="stylesheet" href="./assets/css/global.css" />-->
+  <title>chọn phim và đặt vé</title>
+</head>
+<body>
+
+
+<div class="content">
+  <div class="container">
+    <div class="d-flex">
+      <div class="wp-context col-9 min-vh-100 padding-right-left-15 text-center">
+        <div class="col-12 h-100 padding-10" style="background-color:#000000">
+          <form [formGroup]="bookingFilm" (ngSubmit)="onSubmit()">
+          <div class="row mb-4">
+            <div class="col-lg-3">
+              <h2 style="color: #fff; text-align: left;margin-left: 15px;">ĐẶT VÉ</h2>
+            </div>
+            <div class="col-lg-6">
+              <div class="row">
+                <div class="col-lg-4">
+                  <input [value]="nameFilm" formControlName="name" disabled style="background: #000;color: #f1f1f1; font-size: 15px; border: none ; width: 100%">
+                </div>
+                <div class="col-lg-4">
+                  <input [value]="dateShow | date:'dd-MM-yyyy'" disabled formControlName="dateshow" style="background: #000;color: #f1f1f1; font-size: 15px; border: none; width: 100%">
+                </div>
+                <div class="col-lg-4">
+                  <input [value]="timeShow" formControlName="timeshow"  disabled style="background: #000;color: #f1f1f1; font-size: 15px; border: none; width: 100%">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3" style="text-align: right;">
+              <button type="submit" class="btn btn-danger">Tiếp theo</button>
+            </div>
+          </div>
+          </form>
+        <div class="row mb-4 mt-4">
+          <div class="col-lg-4">
+          </div>
+          <div class="col-lg-4">
+            <small class="text-danger">{{message}}</small>
+          </div>
+          <div class="col-lg-4">
+          </div>
+        </div>
+          <div class="title row" >
+
+            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 content-side">
+
+              <div class="list-film">
+                <h5>CHỌN PHIM</h5>
+                <div class="scrolling-box">
+                  <div class="list-block main-block cr-list-block">
+
+                    <div class="list-content" *ngFor="let film of films">
+                      <div class="main-img list-img cr-list-img">
+                        <a >
+                          <img [src]="film.filmImgs[0].urlImg" class="img-responsive"
+                               alt="car-img" (change)="showDateShow(film.id)"/>
+                        </a>
+                      </div>
+                      <div class="list-info cr-list-info">
+                        <h6 class="block-title"><a (click)="showDateShow(film.id)" >{{film.name}}</a></h6>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div><!-- end columns -->
+
+            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 content-side">
+              <div class="list-film1">
+                <h5>CHỌN NGÀY CHIẾU</h5>
+                <div class="scrolling-box1">
+                  <div class="list-content1" *ngFor="let seat of seatDetails" >
+                    <div class="days" (click)="ShowTimeShow(seat.dateShow)">{{seat.dateShow |date:"dd-MM-yyyy"}}</div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end columns -->
+            <div class="col-4 col-xs-4 col-sm-4 col-md-4 col-lg-4 content-side">
+              <div class="list-film1">
+                <h5>CHỌN GIỜ CHIẾU</h5>
+                <div class="scrolling-box1">
+                  <div class="list-content1" >
+                    <div *ngFor="let time of times1">
+                      <div class="days" (click)="chooseTimeShow(time.time_show,time.time_id)">
+                        {{time.time_show}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- end columns -->
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar col-3 min-vh-100 padding-right-left-15" style="background: #111111; border: #ef3e3a 1px solid">
+        <div class="col-12 h-100 padding-10 bg-sidebar">
+          <div class="sidebar__top padding-right-left-15">
+            <img *ngIf="film !==null" src="{{film.filmImgs[0].urlImg}}" class="col-12" alt="" />
+          </div>
+          <div class="sidebar_bottom">
+            <div class="sub-title">
+              <h2 *ngIf="film !==null" style="text-align: center; padding-top: 10px; color: #ffffff">{{film.name}}</h2>
+            </div>
+          </div>
+          <div *ngIf="film ==null">
+          <div  class="list-content" *ngFor="let film of films">
+            <div class="main-img list-img cr-list-img">
+              <a >
+                <img [src]="film.filmImgs[0].urlImg" class="img-responsive"
+                     alt="car-img" (change)="showDateShow(film.id)"/>
+              </a>
+            </div>
+            <div class="list-info cr-list-info">
+              <h6 class="block-title"><a (click)="showDateShow(film.id)" >{{film.name}}</a></h6>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

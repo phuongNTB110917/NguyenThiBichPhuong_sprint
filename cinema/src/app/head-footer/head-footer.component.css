@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 2px;
+  box-sizing: border-box;
+}
+body {
+  /*background: linear-gradient(to right, rgb(142, 247, 142), rgb(248, 115, 115), rgb(243, 243, 110));*/
+  background: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 15px;
+}
+
+.header {
+  background-color: black;
+  color: white;
+}
+
+.header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding-bottom: 9px;
+}
+.header_login{
+  list-style-type: none; (dùng để loại bỏ dấu đầu mục và margin, padding ra khỏi danh sách:)
+text-decoration: none;
+}
+.header_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_film button,
+.input_search input,
+.input_search button {
+  border: none;
+  padding: 12px 15px;
+  font-size: 1.2rem;
+}
+
+.input_search {
+  padding-right: 150px;
+}
+
+.menu_film button:hover,
+.input_search button:hover {
+  background-color: rgb(200, 204, 207);
+}
+
+.input_search input {}
+
+.body {
+  display: flex;
+  padding: 30px;
+  background-color: black;
+  color: black;
+}
+
+.card {
+  background-color: white;
+  margin-right: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  max-width: 269px;
+  max-height: 345px;
+  width: auto;
+  height: auto;
+}
+
+.card_film {
+  max-width: fit-content;
+  padding: 10px 15px;
+}
+
+.card_film p {
+  padding-bottom: 5px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.card_film h2 {
+  padding: 5px 0;
+}
+
+.card_film button {
+  padding: 10px 15px;
+  color: aliceblue;
+  font-size: 1.2rem;
+  background-color: black;
+  border: none;
+  margin: 5px 0;
+  border-radius: 3px;
+}
+
+.card_film button:hover {
+  background-color: rgb(220, 224, 228);
+  color: black;
+}
+/*---*/
+* {
+  box-sizing: inherit;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.header_logo>img {
+  /* /* width: 500px; */
+  height: 100px;
+  width: 315px;
+  border: none;
+}
+
+.header_info {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px;
+  align-items: center;
+  color: rgb(126, 131, 136);
+}
+
+.header_find.header_login {
+  text-align: center;
+}
+
+.header_login {
+  margin-right: 35px;
+}
+
+.header_login>a {
+  text-decoration: none;
+}
+
+.header_find-input {
+  height: 40px;
+  width: 300px;
+}
+
+.vn {
+  color: rgb(235, 88, 30);
+}
+
+.menu {
+  display: block;
+  background-color: black;
+  /* height: 40px; */
+  text-align: center;
+}
+.menu_list{
+
+}
+.menu_list:hover {
+  background-color: red;
+}
+.nav {
+  display: inline-block;
+  list-style: none;
+}
+
+.nav_item {
+  display: inline-block;
+}
+
+.nav_item>a {
+  text-decoration: none;
+  color: white;
+  margin: 0px;
+  padding: 8px 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-items: center;
+}
+
+.nav_item-link {
+  position: relative;
+}
+
+.subnav {
+  display: none;
+  position: absolute;
+  list-style: none;
+  background-color: red;
+}
+
+.subnav_item-link {
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nav_item-link:hover {
+  color: rgb(238, 90, 22);
+}
+
+.nav_item-link:hover .subnav {
+  display: block;
+}
+
+.body {
+  border: 20px solid rgb(255, 254, 254);
+}
+
+.foote {
+  background-color: black;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-weight: 200;
+}
+
+.footer_header {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  line-height: 1;
+  position: relative;
+  margin: 25px 0 25px 0;
+  padding-left: 16px;
+  border-left: 5px solid red;
+}
+
+.footer_list {
+  padding: 0 50px;
+}
+
+.footer_menu {
+  list-style: none;
+}
+
+.footer_list-menu>a {
+  text-decoration: none;
+  color: white;
+  line-height: 30px;
+}
+
+.footer_list-menu>i {
+  font-size: 0.7rem;
+  padding-right: 4px;
+}
+
+.footer_menu {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.footer_netword-icon>i {
+  font-size: 1.5rem;
+  padding-right: 3px;
+}
+
+.pag {
+  border: 0.5px solid white;
+}
+
+.pag_footer {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  padding: 0 220px;
+}
+
+.pading_img {
+  padding-right: 5px;
+}
+
+.pading_img > img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+}
+
+.pading_text {
+  color: rgb(214, 205, 205);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+.many_card{
+  max-width: 70%;
+}
+/*.card .card-img-top{max-width: 40%;}*/
+
+.padding-right-left-15 {
+  padding: 0px 15px;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.padding-top-bottom-10 {
+  padding: 10px 0;
+}
+
+.upper-text{
+  text-transform: uppercase;
+}
+
+.vn {
+  color: #a0a3a7;
+}

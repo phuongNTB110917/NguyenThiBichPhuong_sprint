@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+<div class="header">
+  <div class="header_info">
+    <div class="header_logo">
+      <a href="/">
+        <img src="../assets/tuan/images/logo.png" alt="" width="250px">
+      </a>
+    </div>
+    <div class="header_login">
+      <li class="nav-item dropdown"><a style="color: white" class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> TÀI KHOẢN </a>
+        <div test="${empty sessionScope.user }">
+          <ul class="dropdown-menu">
+            <li><a style="color: black" href="/security/login">Đăng nhập</a></li>
+            <li><a style="color: black"  href="/account/register">Đăng ký</a></li>
+          </ul>
+        </div>
+        <div>
+          <ul class="dropdown-menu" style="background-color: #FFF">
+            <li style="border-bottom: 2px solid #EEEEEE;"><a routerLink="/account/changePassword">Thay đổi mật khẩu</a></li>
+            <li style="border-bottom: 2px solid #EEEEEE;"><a routerLink="/account/changeInfo">Cập nhật thông tin cá nhân</a></li>
+            <li style="border-bottom: 2px solid #EEEEEE;"><a routerLink="/account/view-history-point">Xem lịch sử điểm</a></li>
+            <li style="border-bottom: 2px solid #EEEEEE;"><a routerLink="/ticket/getbookedticket">Vé đã đặt</a></li>
+            <li style="border-bottom: 2px solid #EEEEEE;"><a routerLink="/account/login">Đăng xuất</a></li>
+            <!--            <li>-->
+            <!--              <a routerLink="/account/changePassword">Thay đổi mật khẩu</a>-->
+            <!--            </li>-->
+            <!--            <li>-->
+            <!--              <a routerLink="/account/changeInfo">Cập nhật thông tin cá nhân</a>-->
+            <!--            </li>-->
+            <!--            <li>-->
+            <!--              <a routerLink="/account/view-history-point">Xem lịch sử điểm</a>-->
+            <!--            </li>-->
+            <!--            <li>-->
+            <!--              <a routerLink="/ticket/getbookedticket">Vé đã đặt</a>-->
+            <!--            </li>-->
+            <!--            <li >-->
+            <!--              <a routerLink="/account/login">Đăng xuất</a>-->
+            <!--            </li>-->
+          </ul>
+        </div>
+      </li>
+      <a href="" class="vn">VN</a>
+      <a href=""> | EN</a>
+    </div>
+  </div>
+  <div class="menu">
+    <ul class="nav">
+      <li class="nav_item"><a href="ticket/getbookedticket" class="menu_list">MUA VÉ</a></li>
+      |
+      <li class="nav_item"><a href="film/film/list" class="menu_list">PHIM <i class="fas fa-angle-down"></i></a></li>|
+      <li class="nav_item nav_item-link">
+        <a href="film/list" class="menu_list">PHIM ĐANG CHIẾU <i class="fas fa-angle-down"></i></a>|
+        <ul class="subnav">
+          <li class="subnav_item"><a class="subnav_item-link" href="#">THỂ LOẠI PHIM</a></li>
+          <li class="subnav_item"><a class="subnav_item-link" href="#">DIỄN VIÊN</a></li>
+          <li class="subnav_item"><a class="subnav_item-link" href="#">ĐẠO DIỄN</a></li>
+          <li class="subnav_item"><a class="subnav_item-link" href="#">BÌNH LUẬN PHIM</a></li>
+          <li class="subnav_item"><a class="subnav_item-link" href="#">BLOG ĐIỆN ẢNH</a></li>
+        </ul>
+      </li>
+      <li class="nav_item nav_item-link">
+        <a href="" class="menu_list">SỰ KIỆN <i class="fas fa-angle-down"></i></a>|
+        <ul class="subnav">
+          <li class="subnav_item"><a class="subnav_item-link" href="#">ƯU ĐÃI</a></li>
+          <li class="subnav_item"><a class="subnav_item-link" href="#">PHIM HAY THÁNG</a></li>
+        </ul>
+      </li>
+      <li class="nav_item"><a href="" class="menu_list">RẠP/GIÁ VÉ</a></li>|
+      <li class="nav_item"><a href="account/list" class="menu_list">THÀNH VIÊN</a></li>|
+      <li class="nav_item"><a href="account/employee" class="menu_list">NHÂN VIÊN</a></li>
+    </ul>
+  </div>
+</div>
+
+
+

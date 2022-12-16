@@ -1,0 +1,104 @@
+<div>
+  <div class="row background">
+    <div class="col-sm-2 p-0" style="  background-color: rgba(0,0,0,0.52);">
+      <div class="list-group ng-dark">
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-film"></i> Bán vé </a>
+        <a routerLink="/booking/managerBooking/list" class="list-group-item list-group-item-action"><i
+          class="bi bi-ticket-perforated-fill"></i> Quản lí đặt vé</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-person-fill"></i> Quản lí nhân viên</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-credit-card-2-back-fill"></i> Quản lí thành viên</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-reels-fill"></i> Quản lí phim</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-calendar-week-fill"></i> Quản lí khuyến mãi</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-video-fill"></i> Quản lí phòng chiếu</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-bar-chart-line-fill"></i> Quản lí thống kê </a>
+      </div>
+    </div>
+    <div class="col-sm-10 p-4 ">
+      <div class="container border" style="background-color: rgba(0,0,0,0.7);">
+        <h1 class="mt-4 mb-4" style="color: red;font-weight: bold">Thông tin nhận vé</h1>
+        <hr style="color: white;  ">
+        <br>
+        <div class="d-flex">
+          <div class="col-sm-4">
+            <img src="{{bookingDetail?.url_Img}}" style="width: 100%"
+                 alt="">
+          </div>
+          <div class="col-sm-8">
+            <table class="table text-center table-responsive-md" style="color: white">
+
+              <tr>
+                <th><h2>{{bookingDetail?.name}}</h2></th>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="col">Ngày chiếu:</th>
+<!--                <td scope="row">{{bookingDetail?.date_Show}}</td>-->
+                <td scope="row">{{bookingDetail?.date_Show | date:'dd-MM-yyyy'}}</td>
+              </tr>
+              <tr>
+                <th scope="col">Giờ chiếu:</th>
+                <td scope="row">{{bookingDetail?.time_Show}}</td>
+              </tr>
+              <tr>
+                <th scope="col">Ghế:</th>
+                <td scope="row">{{bookingDetail?.seat_Name}}</td>
+              </tr>
+              <tr>
+                <th scope="col">loai:</th>
+                <td scope="row">{{bookingDetail?.vip}}</td>
+              </tr>
+              <tr>
+                <th scope="col">Giá:</th>
+                <td scope="row">
+                 {{bookingDetail?.price}} VND
+                </td>
+              </tr>
+              <tr>
+                <th scope="col">Điểm đổi vé:</th>
+                <td scope="row">{{bookingDetail?.point_Exchange}}</td>
+              </tr>
+
+              <tr>
+                <th scope="col">Tổng cộng:</th>
+                <td scope="row">{{bookingDetail?.total_Price}} VND</td>
+              </tr>
+
+              &nbsp;&nbsp;
+              <tr>
+                <th><h2> Thông tin thành viên</h2></th>
+                <td></td>
+              </tr>
+
+
+              <tr>
+                <th>Mã thành viên:</th>
+                <td>{{bookingDetail?.account_Code}}</td>
+              </tr>
+              <tr>
+                <th scope="col">CMND:</th>
+                <td scope="row">{{bookingDetail?.id_Card}}</td>
+              </tr>
+              <tr>
+                <th scope="col">Họ tên:</th>
+                <td scope="row">{{bookingDetail?.fullname}}</td>
+              </tr>
+              <tr>
+                <th scope="col">Số điện thoại:</th>
+                <td scope="row">{{bookingDetail?.phone}}</td>
+              </tr>
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

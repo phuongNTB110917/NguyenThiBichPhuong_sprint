@@ -1,0 +1,296 @@
+<div>
+  <div class="row background">
+    <div class="col-sm-2 p-0" style="height:120vh;  background-color: rgba(0,0,0,0.52);">
+      <div class="list-group ng-dark">
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-film"></i> Bán vé </a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-ticket-perforated-fill"></i> Quản lí đặt vé</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-person-fill"></i> Quản lí nhân viên</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-credit-card-2-back-fill"></i> Quản lí thành viên</a>
+        <a routerLink="/film/list" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-reels-fill"></i> Quản lí phim</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-calendar-week-fill"></i> Quản lí khuyến mãi</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-camera-video-fill"></i> Quản lí phòng chiếu</a>
+        <a href="#" class="list-group-item list-group-item-action"><i
+          class="bi bi-bar-chart-line-fill"></i> Quản lí thống kê </a>
+      </div>
+    </div>
+    <div class="col-sm-10 p-4">
+      <div class="container border" style="background-color: rgba(0,0,0,0.7)">
+        <h1 *ngIf="idEdit == 0" class="mt-4 mb-4" style="color: red;font-weight: bold">Thêm mới phim</h1>
+        <h1 *ngIf="idEdit != 0" class="mt-4 mb-4" style="color: red;font-weight: bold">Chỉnh sửa phim</h1>
+        <hr style="color: white;  ">
+        <form [formGroup]="formFilm" (ngSubmit)="onSubmit()"
+              style="padding-left: 190px; padding-right: 50px">
+
+          <div class="form-group row" style="padding-top: 30px">
+            <label style="color: whitesmoke" for="inputFilmName" class="col-sm-2 col-form-label">Tên phim
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputFilmName" formControlName="name">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.name">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('name').hasError(validation.type)&&(formFilm.get('name').dirty || formFilm.get('name').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <fieldset class="form-group row">
+            <legend style="color: whitesmoke" class="col-form-label col-sm-2 float-sm-left pt-0">Phiên bản
+              <span class="text-danger">(*)</span></legend>
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input formControlName="version" class="form-check-input" type="radio" name="version"
+                       id="2D" value="2D">
+                <label style="color: whitesmoke" class="form-check-label" for="2D">2D</label>
+                <input formControlName="version" style="margin-left: 30px" class="form-check-input" type="radio"
+                       name="version" id="3D" value="3D">
+                <label style="margin-left: 50px;color: whitesmoke" class="form-check-label"
+                       for="3D">3D</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-group row">
+            <label style="color: whitesmoke" for="inputStarDay" class="col-sm-2 col-form-label">Từ ngày
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" id="inputStarDay" formControlName="startDate">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.startDate">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('startDate').hasError(validation.type)&&(formFilm.get('startDate').dirty || formFilm.get('startDate').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label style="color: whitesmoke" for="inputEndDay" class="col-sm-2 col-form-label">Đến ngày
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-4">
+              <input type="date" class="form-control" id="inputEndDay" formControlName="endDate">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.endDate">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('startDate').hasError(validation.type)&&(formFilm.get('startDate').dirty || formFilm.get('startDate').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row" style="padding-top: 30px">
+            <label style="color: whitesmoke" for="inputActorName" class="col-sm-2 col-form-label">Diễn viên
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputActorName" formControlName="actor">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.actor">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('actor').hasError(validation.type)&&(formFilm.get('actor').dirty || formFilm.get('actor').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label style="padding-right: 1px;color: whitesmoke"
+                   for="inputFilmStudio" class="col-sm-2 col-form-label">Hãng phim
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputFilmStudio" formControlName="studioName">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.studioName">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('studioName').hasError(validation.type)&&(formFilm.get('studioName').dirty || formFilm.get('studioName').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label style="color: whitesmoke" for="inputDirectorName" class="col-sm-2 col-form-label">Đạo diễn
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputDirectorName" formControlName="director">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.director">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('director').hasError(validation.type)&&(formFilm.get('director').dirty || formFilm.get('director').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label style="padding-right: 1px;color: whitesmoke"
+                   for="inputTime" class="col-sm-2 col-form-label">Thời lượng
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputTime" formControlName="duration">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.duration">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('duration').hasError(validation.type)&&(formFilm.get('duration').dirty || formFilm.get('duration').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+
+          <div class="form-group row">
+            <label style="padding-right: 1px;color: whitesmoke"
+                   for="inputTrailer" class="col-sm-2 col-form-label">Trailer
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputTrailer" formControlName="trailer">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.trailer">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('trailer').hasError(validation.type)&&(formFilm.get('trailer').dirty || formFilm.get('trailer').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row">
+            <label style="padding-right: 1px;color: whitesmoke"
+                   for="inputImg" class="col-sm-2 col-form-label">Hình ảnh
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="inputImg" formControlName="img">
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.img">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('img').hasError(validation.type)&&(formFilm.get('img').dirty || formFilm.get('trailer').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="form-group row" style="margin-bottom: 100px">
+            <label style="padding-right: 1px;color: whitesmoke"
+                   for="inputTrailer" class="col-sm-2 col-form-label">Thể loại
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-10" style="height: 30px">
+              <div class="row" style="margin-left: 10px">
+                <div style="margin-right: 0" class="form-check form-check-inline col-3"
+                     *ngFor="let category of categoryList" >
+                  <input formArrayName="categories" name="checkType" value="checkType" style="accent-color: red" class="form-check-input"
+                         type="checkbox" id="categories" [value]="category.id">
+                  <label style="color: white"
+                         class="form-check-label" for="categories">{{category?.nameCategory}}</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--        <div class="form-group row">-->
+          <!--          <div class="card col-4" style="width: 18rem; background-color: transparent">-->
+          <!--            <div class="card-body"-->
+          <!--                 style="border-style: double; border-color: red ">-->
+          <!--              <h5 class="card-title" style="color: white; font-weight: bold">Thêm lịch chiếu</h5>-->
+          <!--              <label style="padding-right: 1px;color: whitesmoke">Chọn ngày chiếu-->
+          <!--                <span class="text-danger">(*)</span></label>-->
+          <!--              <div>-->
+
+          <!--                <input type="date">-->
+          <!--              </div>-->
+          <!--              <label style="padding-right: 1px;color: whitesmoke">Chọn phòng chiếu-->
+          <!--                <span class="text-danger">(*)</span></label>-->
+          <!--              <div>-->
+          <!--                <select class="form-select form-select-sm" aria-label=".form-select-sm example">-->
+          <!--                  <option selected>Chọn phòng chiếu</option>-->
+          <!--                  <option value="1">Phòng 1</option>-->
+          <!--                  <option value="2">Phòng 2</option>-->
+          <!--                  <option value="3">Phòng 3</option>-->
+          <!--                </select>-->
+          <!--              </div>-->
+          <!--              <label style="padding-right: 1px;color: whitesmoke; margin-bottom: 0px; margin-top: 3px ">Chọn giờ chiếu-->
+          <!--                <span class="text-danger">(*)</span></label>-->
+          <!--              <div class="row">-->
+          <!--                <table class="table table-borderless" style="margin-bottom: 0px">-->
+          <!--                  <tr>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><input-->
+          <!--                      style="accent-color: #E50815; margin-left: 15px;margin-top: 7px" class="form-check-input "-->
+          <!--                      type="checkbox"></td>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><label style="color: whitesmoke"-->
+          <!--                                                                             class="form-check-label ">-->
+          <!--                      8:00-10:00-->
+          <!--                    </label></td>-->
+          <!--                  </tr>-->
+          <!--                  <tr>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><input-->
+          <!--                      style="accent-color: #E50815; margin-left: 15px;margin-top: 7px" class="form-check-input "-->
+          <!--                      type="checkbox"></td>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><label style="color: whitesmoke"-->
+          <!--                                                                             class="form-check-label ">-->
+          <!--                      10:00-12:00-->
+          <!--                    </label></td>-->
+          <!--                  </tr>-->
+          <!--                  <tr>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><input-->
+          <!--                      style="accent-color: #E50815; margin-left: 15px;margin-top: 7px" class="form-check-input "-->
+          <!--                      type="checkbox"></td>-->
+          <!--                    <td style="padding-top: 0px; padding-bottom: 0px"><label style="color: whitesmoke"-->
+          <!--                                                                             class="form-check-label ">-->
+          <!--                      12:00-14:00-->
+          <!--                    </label></td>-->
+          <!--                  </tr>-->
+          <!--                </table>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          <div class="card col-4" style="width: 18rem; background-color: transparent">-->
+          <!--            &lt;!&ndash;                    padding: 110px 90px;&ndash;&gt;-->
+          <!--            <div class="card-body d-flex justify-content-center align-items-center"-->
+          <!--                 style="border-color: red; border-style: double">-->
+          <!--              <button type="button" class="btn btn-dark" style="background-color: transparent">-->
+          <!--                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"-->
+          <!--                     class="bi bi-plus-circle-fill" viewBox="0 0 16 16">-->
+          <!--                  <path style="color: red"-->
+          <!--                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>-->
+          <!--                </svg>-->
+          <!--              </button>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--        </div>-->
+          <div class="form-group row">
+            <label style="color: whitesmoke" for="inputContent" class="col-sm-2 col-form-label">Nội dung
+              <span class="text-danger">(*)</span></label>
+            <div class="col-sm-9">
+              <textarea style="width: 300px; height: 120px" id="inputContent" class="form-control"
+                        formControlName="content"></textarea>
+            </div>
+            <ng-container *ngFor="let validation of validation_messages.content">
+              <small class="form-text text-danger"
+                     *ngIf="formFilm.get('content').hasError(validation.type)&&(formFilm.get('content').dirty || formFilm.get('content').touched)">
+                {{validation.message}}
+              </small>
+            </ng-container>
+          </div>
+          <div class="container" style="padding: 0 0 15px 230px">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-plus-square"></i>
+            </button>
+            <button style="margin-left: 10px" type="reset" class="btn btn-outline-danger"><i class="bi bi-x-square"></i>
+            </button>
+            <button style="margin-left: 10px" [routerLink]="['/film/list']"
+                    type="submit" class="btn btn-outline-warning"><i class="bi bi-backspace"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
+
+      function checkHanhDong() {
+        var check = document.getElementById('hanhDong');
+        if (check.checked == true) {
+          console.log('đã check')
+        }
+      }
+    </script>
+  </div>
+</div>

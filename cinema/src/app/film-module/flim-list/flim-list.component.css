@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header_title {
+  display: flex;
+  justify-content: space-between;
+  background: black;
+}
+/*body {*/
+/*  !*background: linear-gradient(to right, rgb(142, 247, 142), rgb(248, 115, 115), rgb(243, 243, 110));*!*/
+/*  background: black;*/
+/*  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+/*  margin: 15px;*/
+/*}*/
+
+.form-control::placeholder{
+  color: black;
+}
+.body {
+  min-height: 600px;
+}
+
+
+.menu_film button,
+.input_search input,
+.input_search button {
+  border: none;
+  padding: 10px 15px;
+  font-size: 1.2rem;
+}
+
+.input_search {
+  padding-right: 150px;
+}
+
+.menu_film button:hover,
+.input_search button:hover {
+  background-color: rgb(200, 204, 207);
+}
+
+.input_search input {}
+
+.body {
+  display: flex;
+  padding: 30px;
+  /*background-color: black;*/
+  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/c2578c37-8569-4f88-b8f1-67a26a9ddcdd/742c60c5-23e0-4b61-8b0e-f434c157f9e6/VN-vi-20220725-popsignuptwoweeks-perspective_alpha_website_medium.jpg);
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: black;
+  margin-right: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card img {
+  max-width: 269px;
+  max-height: 345px;
+  width: auto;
+  height: auto;
+}
+
+.card_film {
+  max-width: fit-content;
+  padding: 10px 15px;
+
+  /*display: flex;*/
+  /*min-height: 200px;*/
+  /*flex-direction: column;*/
+  /*justify-content: space-around;*/
+}
+
+.card_film p {
+  padding-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.card_film h2 {
+  padding: 5px 0;
+}
+
+.card button {
+  padding: 10px 15px;
+  color: aliceblue;
+  font-size: 1.2rem;
+  background-color: black;
+  border: none;
+  margin: 5px 0;
+  border-radius: 3px;
+}
+
+.card button:hover {
+  background-color: rgb(220, 224, 228);
+  color: black;
+}
+/*---*/
+* {
+  box-sizing: inherit;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+.mt-3{
+  background-color: black;
+}
+#imgstyle {
+  width: 240px;
+  height: 280px;
+}
+.header_title button{
+  margin: 3px;
+}
+.card_film  button{
+  margin: 5px;
+}
+.mt-4{
+  margin-top: -2.5rem !important;
+}
+.page-item{
+  /*background: red;*/
+  /*color: white;*/
+  font-size: 20px;
+  margin: auto;
+}
+.page-item .page-link{
+  background-color: red;
+  color: #FFFFFF;
+}
+
+.detail{
+  min-height: 150px;
+}
+
+.button--active{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+}
+
+.button--active button{
+  width: 100px;
+  display: none;
+}
+
+.bg{
+  background-color: white;
+}
+
+.card:hover>.bg{
+  opacity: 0.5;
+}
+
+.card:hover .button--active button{
+  display: block;
+  position: relative;
+  display: inline-block;
+}
+.form-search {
+  color: #000 !important;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.btn-search {
+  padding: 4px 8px;
+}

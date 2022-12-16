@@ -1,0 +1,61 @@
+.background {
+  background-image: url(https://assets.nflxext.com/ffe/siteui/vlv3/c2578c37-8569-4f88-b8f1-67a26a9ddcdd/742c60c5-23e0-4b61-8b0e-f434c157f9e6/VN-vi-20220725-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  background-size: cover;
+}
+.text-color-red-primary {
+  color: #e50914;
+}
+
+.bg-color-btn {
+  background-color: #e50914;
+}
+
+.bg-color-btn:hover {
+  background-color: #b80a13;
+}
+.form-wrapper {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #b3b3b3;
+  margin-top: 30px;
+}
+
+.form-control {
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+}
+
+.form-control-disable {
+  background-color: rgb(160, 158, 158) !important;
+  color: rgb(85, 85, 85);
+}
+.table {
+  color: #b3b3b3;
+}
+
+.table thead th {
+  border-bottom: none;
+}
+
+.page-link {
+  color: red !important;
+  background-color: #000;
+}
+.page-link:hover {
+  cursor: pointer;
+  border-color: green;
+}
+.icon-view {
+  position: relative;
+  top: -1px;
+}
+#date-begin-input:focus,
+#date-end-input:focus {
+  color: #000 !important;
+}

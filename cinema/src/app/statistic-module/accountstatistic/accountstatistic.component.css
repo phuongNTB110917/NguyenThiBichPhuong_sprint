@@ -1,0 +1,50 @@
+body{
+  background-color: #EEEEEE;
+  /*background-image: url("cafe.jpg");*/
+  background-size: cover;
+  /*background-blend-mode: luminosity;*/
+}
+h1{
+  color: #E50815;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+.thuNhap{
+  background-color: #E50815;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 10px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  width: 100%;
+  border: 0;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+  padding: 10px;
+}
+.textInput{
+  color: #2441b4;
+  font-weight: bold;
+  font-size: 20px;
+  /*font-family: Courier;*/
+}
+.titular{
+  color: #E50815;
+}
+.center-date{
+  color: #E50815;
+  margin: 5px;
+}

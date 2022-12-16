@@ -1,0 +1,102 @@
+<div  class="row" >
+  <div class="col-3" style="justify-content: center"></div>
+  <div class="col-6 " style="padding-inline: 30px; border: 2px solid #E50815;
+                             background-color: rgba(0,0,0,0.3)">
+
+    <h1>Thống kê thành viên</h1>
+
+    <table class="table table-sm table-dark" style="text-align: center">
+      <thead>
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã thành viên</th>
+        <th scope="col">Tên thành viên</th>
+        <th scope="col">Số lượng vé</th>
+        <th scope="col">Tổng tiền</th>
+        <th scope="col">Điểm tích lũy</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of statisticAccounts, index as i">
+        <td>{{i+ 1}}</td>
+        <td>{{a.accountCode}}</td>
+        <td>{{a.fullName}}</td>
+        <td>{{a.numberTicket}}</td>
+        <td>{{a.money | currency: 'VND' : ''}}</td>
+        <td>{{a.point}}</td>
+      </tbody>
+    </table>
+
+    <!--Pagination-->
+    <div class="clearfix" style="float: right">
+      <nav aria-label="...">
+        <ul class="pagination">
+          <div *ngIf="pageNumber > 0; then enablePrevious else disablePrevious"></div>
+          <ng-template #enablePrevious>
+            <li class="page-item">
+              <span class="page-link" (click)="previousPage()">Prev</span>
+            </li>
+          </ng-template>
+          <ng-template #disablePrevious>
+            <li class="page-item disabled">
+              <span class="page-link">Prev</span>
+            </li>
+          </ng-template>
+
+          <div *ngFor="let page of totalPage; index as i">
+            <div *ngIf="pageNumber == i; then isCurrentPage else notCurrentPage"></div>
+            <ng-template #isCurrentPage>
+              <li class="page-item active">
+                <span class="page-link" (click)="changePageNumber(i)">{{i + 1}}</span>
+              </li>
+            </ng-template>
+            <ng-template #notCurrentPage>
+              <li class="page-item">
+                <span class="page-link" (click)="changePageNumber(i)">{{i + 1}}</span>
+              </li>
+            </ng-template>
+          </div>
+
+          <div *ngIf="pageNumber < totalPage.length - 1; then enableNext else disableNext"></div>
+          <ng-template #enableNext>
+            <li class="page-item">
+              <span class="page-link" (click)="nextPage()">Next</span>
+            </li>
+          </ng-template>
+          <ng-template #disableNext>
+            <li class="page-item disabled">
+              <span class="page-link">Next</span>
+            </li>
+          </ng-template>
+        </ul>
+      </nav>
+    </div>
+
+    <!--    thống kê-->
+    <div>
+      <div class="col-md-3">
+        <button (click)="onStatistics() " class="thuNhap mt-2"> Thống kê </button>
+      </div>
+      <div class="row">
+        <div class="textInput">
+          <div *ngIf="changeStatistics">
+            Tổng tiền trong ngày: {{sum | currency: 'VND' : ''}} VND
+          </div>
+
+        </div>
+
+        <div class="row">
+          <h2 class="titular">Sơ đồ thống kê</h2>
+          <p class="center-date">August<span class="scnd-font-color"> 2022</span></p>
+          <div>
+            <canvas id="myChart1" width="600" height="250"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

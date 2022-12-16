@@ -1,0 +1,56 @@
+i[class^="bi"] {
+  min-width: 30px;
+  text-align: center;
+  position: relative;
+  top: -2px;
+}
+
+.avatar-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.text-color-red-primary {
+  color: #e50914;
+}
+
+.bg-color-btn {
+  background-color: #e50914;
+}
+
+.bg-color-btn:hover {
+  background-color: #b80a13;
+}
+
+#sidebarMenu {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  height: 100vh;
+  border-radius: 4px;
+}
+
+.list-group-item {
+  background-color: rgba(0, 0, 0, 0);
+  border-top: 2px solid rgba(207, 200, 200, 0.125);
+  color: #b3b3b3;
+}
+
+.list-group-item:last-child {
+  border-bottom: 2px solid rgba(207, 200, 200, 0.125);
+}
+
+.list-group-item:first-child:hover,
+.list-group-item:hover {
+  color: #e50914;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+.list-group-item:first-child:hover {
+  background-color: rgba(0, 0, 0, 0);
+}

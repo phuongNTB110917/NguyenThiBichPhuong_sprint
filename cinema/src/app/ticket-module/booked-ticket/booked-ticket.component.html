@@ -1,0 +1,96 @@
+<div class="background">
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-2">
+      <!-- Sidebar -->
+      <app-sidebar></app-sidebar>
+      <!-- Sidebar -->
+    </div>
+
+    <div class="col-10 ">
+      <table class="table" id="list" style="border: 1px solid; background: rgba(0,0,0,0.7); border-color: #f0f0f0">
+        <thead style="background-color: #de1111">
+        <tr>
+          <th colspan="5"> Vé đã đặt</th>
+        </tr>
+        </thead>
+        <tbody style="color: #f0f0f0">
+        <tr style="color: red">
+          <th>Tên phim</th>
+          <th>Ngày đặt (dd/mm/yy hh:mm)</th>
+          <th>Tổng tiền (VND)</th>
+          <th>Trạng thái</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let bookedTicket of bookedTickets; index as i">
+          <td>{{bookedTicket.name}}</td>
+          <td>{{bookedTicket.dayTimeBooking | date:'dd/mm/yyyy HH:mm' }}</td>
+          <td>{{bookedTicket.totalPrice | currency:'VND':''}}</td>
+          <td *ngIf="bookedTicket.received" style="color: #5ed95e">Đã nhận vé</td>
+          <td *ngIf="!bookedTicket.received" style="color: #0090ff">Đợi nhận vé</td>
+          <td>
+            <button type="button" style="border: none" data-toggle="modal" data-target="#exampleModal"
+                    class="btn-danger"
+                    (click)="findBookedTicketDeleteById(bookedTicket.name,bookedTicket.totalPrice,bookedTicket.id)">
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="mt-3">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination d-flex justify-content-md-end justify-content-center">
+            <li class="page-item">
+              <button class="page-link bi bi-chevron-double-left" (click)="firstPage()" *ngIf="indexPagination != 1"></button>
+            </li>
+            <li class="page-item">
+              <button class="page-link bi bi-chevron-left" (click)="previousPage()" *ngIf="indexPagination != 1"></button>
+            </li>
+
+            <li class="page-item col-md-1 col-2  px-0 text-center" style="line-height: 38px;color: white">
+              <span>{{indexPagination }}</span>/<span>{{totalPages}}</span>
+            </li>
+
+            <li class="page-item">
+              <button class="page-link bi bi-chevron-right" (click)="nextPage()" *ngIf="indexPagination != totalPages "></button>
+            </li>
+            <li class="page-item">
+              <button class="page-link bi bi-chevron-double-right" (click)="lastPage()" *ngIf="indexPagination != totalPages  "></button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Bạn có muốn hủy đặt vé phim:</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Tên phim: <span style="color: red">{{name}}</span></h5>
+          <hr>
+          <h5>Tổng tiền: <span style="color: red">{{price | currency:'VND':''}} VND</span></h5>
+          <hr>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="deleteTicket()">Xóa</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Hủy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!--<button class="btn-danger">abc</button>-->
